@@ -36,7 +36,7 @@ pip install pandas numpy matplotlib seaborn plotly scikit-learn streamlit
 
 ### Usage
 1. Clone the repository:
-git clone https://github.com/your-repo/nba-streamlit-analysis.git cd nba-streamlit-analysis
+git clone https://github.com/Amirhatamian/nba-streamlit-analysis.git cd nba-streamlit-analysis
 2. Ensure the required datasets are in the correct directory. Update file paths in the script if needed.
 3. Run the Streamlit application:
 streamlit run Streamlit_Project_Programming.py
