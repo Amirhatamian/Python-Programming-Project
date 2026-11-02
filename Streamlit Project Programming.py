@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
-import webbrowser
+import os
 import streamlit as st
 from sklearn.model_selection import train_test_split 
 from sklearn.preprocessing import StandardScaler 
@@ -19,11 +19,12 @@ from sklearn.svm import SVC
 
 
 
-# Load the data
-nba_df = pd.read_csv(r"C:\Users\User\Downloads\Compressed\NBA dataset\NBA dataset\games_details.csv")
-teams_df = pd.read_csv(r"C:\Users\User\Downloads\Compressed\NBA dataset\NBA dataset\teams.csv")
-games_df = pd.read_csv(r"C:\Users\User\Downloads\Compressed\NBA dataset\NBA dataset\games.csv")
-ranking_df = pd.read_csv(r"C:\Users\User\Downloads\Compressed\NBA dataset\NBA dataset\ranking.csv")
+# Load the data (unzip "NBA dataset.zip" next to this script first)
+DATA_DIR = os.path.join("NBA dataset", "NBA dataset")
+nba_df = pd.read_csv(os.path.join(DATA_DIR, "games_details.csv"))
+teams_df = pd.read_csv(os.path.join(DATA_DIR, "teams.csv"))
+games_df = pd.read_csv(os.path.join(DATA_DIR, "games.csv"))
+ranking_df = pd.read_csv(os.path.join(DATA_DIR, "ranking.csv"))
 
 
 # Streamlit App Header
@@ -43,8 +44,7 @@ st.write('teams.csv : all teams of NBA')
 
 kaggle_url = 'https://www.kaggle.com/datasets/nathanlauga/nba-games'
 
-if st.button('Go to Kaggle'):
-    webbrowser.open_new_tab(kaggle_url)
+st.markdown(f'Data source: [NBA games data on Kaggle]({kaggle_url})')
 
 
 # droping extra columns:'PLAYER_ID', 'NICKNAME', and 'COMMENT' in nba dataframe

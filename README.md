@@ -1,59 +1,44 @@
-# NBA Data Analysis and Visualization Using Streamlit
+# NBA Data Analysis Dashboard with Streamlit
 
-## Overview
-This project provides an interactive dashboard for exploring and analyzing NBA datasets using Streamlit. It leverages Python's data analysis and visualization libraries to offer insights into NBA games, teams, and rankings.
+An interactive Streamlit app that cleans and explores NBA game data, then trains several classifiers to predict whether the home team wins a game. Final project of my Python Programming course.
 
-## Features
-- Interactive visualizations using Plotly, Seaborn, and Matplotlib.
-- Machine learning integration for predictive modeling and analysis.
-- Data filtering and exploration through an intuitive Streamlit interface.
+## Data
 
-## Technology Stack
-- Programming Language: Python 3.x
-- Libraries:
-  - pandas: For data manipulation.
-  - numpy: For numerical computations.
-  - matplotlib & seaborn: For static data visualizations.
-  - plotly: For interactive visualizations.
-  - scikit-learn: For machine learning models.
-  - streamlit: For creating the interactive web-based dashboard.
+[NBA games data](https://www.kaggle.com/datasets/nathanlauga/nba-games) (Kaggle), included here as `NBA dataset.zip`:
 
-## File Structure
-- Python Script: The main Streamlit application script for running the dashboard.
-- Data:
-  - games_details.csv: Detailed information about individual games.
-  - teams.csv: Information about NBA teams.
-  - games.csv: Summary of game results.
-  - rankings.csv: Team rankings over time.
+| File | Content |
+|---|---|
+| `games.csv` | One row per game since 2004: teams, points, shooting percentages, assists, rebounds, home win yes/no |
+| `games_details.csv` | Player statistics for each game |
+| `ranking.csv` | Daily team standings, East and West |
+| `teams.csv` | The 30 NBA teams |
 
-## Getting Started
+## What the app shows
 
-### Prerequisites
-- Python 3.x installed on your system.
-- Required Python libraries installed:
-pip install pandas numpy matplotlib seaborn plotly scikit-learn streamlit
+1. **Data cleaning:** dropping unused columns, joining player and team tables, removing duplicates and teams that no longer exist, filling missing values.
+2. **Charts:** points by starting position, three-pointers vs total points, star player comparisons, home vs away results, shooting percentages at home and away.
+3. **Prediction:** predicts `HOME_TEAM_WINS` from ten game statistics (field goal %, free throw %, three-point %, assists and rebounds for the home and away teams). Models compared: random forest, XGBoost, CatBoost, Gaussian Naive Bayes, logistic regression, KNN and a tuned decision tree (grid search on balanced accuracy).
 
+## Files
 
-### Usage
-1. Clone the repository:
-git clone https://github.com/Amirhatamian/nba-streamlit-analysis.git cd nba-streamlit-analysis
-2. Ensure the required datasets are in the correct directory. Update file paths in the script if needed.
-3. Run the Streamlit application:
-streamlit run Streamlit_Project_Programming.py
-4. Access the dashboard in your browser and explore the data.
+| File | Description |
+|---|---|
+| `Streamlit Project Programming.py` | The Streamlit app |
+| `NBA dataset.zip` | The four CSV files |
+| `Final Project Programming.zip` | The Jupyter notebook version of the analysis |
 
-## Key Functionalities
-1. **Data Loading**:
-- Load NBA datasets including games, teams, rankings, and game details.
-2. **Data Visualization**:
-- Create static and interactive visualizations to explore trends and insights.
-3. **Predictive Modeling**:
-- Implement machine learning models for predictive analysis of NBA game outcomes.
-4. **Interactive Features**:
-- Use Streamlit widgets for data filtering, input selection, and dynamic updates.
+## How to run
 
-## Results
-The dashboard enables users to explore NBA datasets interactively, visualize trends, and perform basic predictive modeling to analyze game outcomes.
+The app was written with pandas 1.x and needs Python 3.8–3.11.
 
-## License
-This project is licensed under the MIT License.
+```bash
+git clone https://github.com/Amirhatamian/Python-Programming-Project.git
+cd Python-Programming-Project
+unzip "NBA dataset.zip"
+pip install "pandas<2" numpy matplotlib seaborn plotly scikit-learn xgboost catboost streamlit
+streamlit run "Streamlit Project Programming.py"
+```
+
+## Tools
+
+Python, pandas, Streamlit, Plotly, Seaborn, Matplotlib, scikit-learn, XGBoost, CatBoost
